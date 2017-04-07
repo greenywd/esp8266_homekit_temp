@@ -20,5 +20,8 @@ Next, install [Homebridge](https://github.com/nfarina/homebridge) along with the
 After starting [Homebridge](https://github.com/nfarina/homebridge) the current temperature should now be displayed in your Home app! (see below for images).
 
 ## Images
+### Home App
 ![Home App](https://github.com/greenywd/esp8266_homekit_temp/blob/master/Home_screenshot.png)
+
+### nodeMCU wired up to the sensor on a breadboard
 ![nodeMCU on breadboard](https://github.com/greenywd/esp8266_homekit_temp/blob/master/nodeMCU_breadboard.jpg)
