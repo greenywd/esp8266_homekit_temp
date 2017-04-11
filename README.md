@@ -13,8 +13,8 @@ Next, install [Homebridge](https://github.com/nfarina/homebridge) along with the
        "name": "Temperature",
        "url": "http://192.168.1.35/temperature?format=json",
        "http_method": "GET"
-      }
-   ],
+   }
+],
 ```
 
 After starting [Homebridge](https://github.com/nfarina/homebridge) the current temperature should now be displayed in your Home app! (see below for images).
