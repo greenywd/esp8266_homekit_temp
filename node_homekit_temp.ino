@@ -1,29 +1,13 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
+#include "DHT.h"
 
 const char* ssid = "INSERT NETWORK SSID HERE";
 const char* password = "INSERT NETWORK PASSWORD HERE";
 
-//connect center pin of temp sensor to A0
-//connect other pins respectively (usually 5v and gnd)
-int tempSensorPin = A0; 
-
 ESP8266WebServer server(80);
-
-int getTemperature(){
- //getting the voltage reading from the temperature sensor
- int sensorReading = analogRead(tempSensorPin);  
- 
- // convert reading to voltage, multiply by 3.3 if 3.3v, 5 if 5v
- // as esp8266 will literally die if we use 5v, 3.3 is being used
- float voltage = sensorReading * 3.3;
- voltage /= 1024.0;
-
- // this is in celsius, so change to fahrenheit if needed
- float temperature = (voltage - 0.5) * 100;
- return round(temperature);
-}
+DHT dht(D2, DHT22); 
 
 void handleRoot() {
   server.send(200, "text/plain", "This is the server root. Nothing to see here...");
@@ -33,10 +17,12 @@ void handleNotFound(){
   server.send(404, "text/plain", "404 Not Found.");
 }
 
-void setup(void){
+void setup(){
   Serial.begin(9600);
   WiFi.begin(ssid, password);
 
+  dht.begin();
+  
   // Wait for connection
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -45,15 +31,15 @@ void setup(void){
   
   Serial.println("Connected to: " + String(ssid));
   Serial.println("IP address: ");
-  Serial.print(WiFi.localIP());
+  Serial.println(WiFi.localIP());
   
   server.on("/", handleRoot);
   
   server.on("/temperature", [](){
-      int currentTemp = getTemperature();
       
       char json[128];
-      snprintf(json, sizeof(json), "{\"temperature\":%i}", currentTemp);
+      snprintf(json, sizeof(json), "{\n \"temperature\":%i,\n \"humidity\":%i\n}", round(dht.readTemperature()), round(dht.readHumidity()));
+      Serial.println("Page accessed...");
       
     server.send(200, "application/json", json);
   });
