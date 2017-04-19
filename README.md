@@ -2,6 +2,8 @@
 Small project to send data from a temperature sensor to a HomeKit server, running on a Raspberry Pi. This branch supports the DHT22 Temperature and Humidity Sensor. See the schematic below on to setup the hardware side of it (I used a 10kohm resistor).
 
 ## Installation
+Firstly, this sketch includes the Adafruit DHT Library. Make sure you have that installed before doing anything else.
+
 Verify and upload the sketch to your board and take note of the IP Address displayed in the Serial Monitor. Go to `http://enter_ip_address/temperature` and ensure that there's json looking like 
 
 ```
