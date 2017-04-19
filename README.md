@@ -3,10 +3,13 @@ Small project to send data from a temperature sensor to a HomeKit server, runnin
 
 ## Installation
 Verify and upload the sketch to your board and take note of the IP Address displayed in the Serial Monitor. Go to `http://enter_ip_address/temperature` and ensure that there's json looking like 
-```{ 
+
+```
+{ 
    "temperature":25, 
    "humidity":30 
-}```
+}
+```
 
 Next, install [Homebridge](https://github.com/nfarina/homebridge) along with the [homebridge-httptemperaturehumidity](https://www.npmjs.com/package/homebridge-httptemperaturehumidity) plugin. Configure the Homebridge config to include the accessory:
 
