@@ -20,6 +20,7 @@ void handleNotFound(){
 void setup(){
   Serial.begin(9600);
 
+  // if the SSID saved does not match the one given, connect to new SSID
   if (WiFi.SSID() != WIFI_SSID){
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   } else { Serial.println("Previous Wifi credientials found!"); }
