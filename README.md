@@ -21,7 +21,7 @@ After starting [Homebridge](https://github.com/nfarina/homebridge) the current t
 
 ## Images
 ### Home App
-![Home App](https://github.com/greenywd/esp8266_homekit_temp/blob/master/Home_screenshot.png)
+![Home App](https://github.com/greenywd/esp8266_homekit_temp/blob/analog/Home_screenshot.png?raw=true)
 
 ### nodeMCU wired up to the sensor on a breadboard
-![nodeMCU on breadboard](https://github.com/greenywd/esp8266_homekit_temp/blob/master/nodeMCU_breadboard.jpg)
+![nodeMCU on breadboard](https://github.com/greenywd/esp8266_homekit_temp/blob/analog/nodeMCU_breadboard.jpg)
