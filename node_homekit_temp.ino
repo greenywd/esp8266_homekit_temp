@@ -3,8 +3,8 @@
 #include <ESP8266WebServer.h>
 #include "DHT.h"
 
-const char* ssid = "INSERT NETWORK SSID HERE";
-const char* password = "INSERT NETWORK PASSWORD HERE";
+#define WIFI_SSID "WIFI SSID"
+#define WIFI_PASSWORD "WIFI PASSWORD"
 
 ESP8266WebServer server(80);
 DHT dht(D2, DHT22); 
@@ -19,8 +19,11 @@ void handleNotFound(){
 
 void setup(){
   Serial.begin(9600);
-  WiFi.begin(ssid, password);
 
+  if (WiFi.SSID() != WIFI_SSID){
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  } else { Serial.println("Previous Wifi credientials found!"); }
+  
   dht.begin();
   
   // Wait for connection
@@ -29,7 +32,7 @@ void setup(){
     Serial.print(".");
   }
   
-  Serial.println("Connected to: " + String(ssid));
+  Serial.println("Connected to: " + String(WIFI_SSID));
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
   
