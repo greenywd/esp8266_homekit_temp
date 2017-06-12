@@ -3,7 +3,6 @@
 #include <ESP8266WebServer.h>
 #include "DHT.h"
 
-// wifi credientials so that the esp knows what to connect to
 #define WIFI_SSID "WIFI SSID"
 #define WIFI_PASSWORD "WIFI PASSWORD"
 
@@ -57,15 +56,14 @@ void setup(){
   // setup the page located at /temperature
   server.on("/temperature", [](){
       
-      // create some json that will include the temperature and humidity read from the sensor
+      // create a char to 
       char json[128];
       snprintf(json, sizeof(json), "{\n \"temperature\":%i,\n \"humidity\":%i\n}", round(dht.readTemperature()), round(dht.readHumidity()));
       
       // print to serial that the page was accessed
       Serial.println("Page accessed...");
       
-      // send the json using application/json 
-      server.send(200, "application/json", json);
+    server.send(200, "application/json", json);
   });
   
   // this calls the handleNotFound() function - if a page that isn't found is accessed
