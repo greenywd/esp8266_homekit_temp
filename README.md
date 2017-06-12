@@ -26,14 +26,15 @@ Next, install [Homebridge](https://github.com/nfarina/homebridge) along with the
 ],
 ```
 
+After starting [Homebridge](https://github.com/nfarina/homebridge) the current temperature and humidity should now be displayed in your Home app! (see below for images).
+
 ## Installation (Analog Sensor)
 To-Do
 
-After starting [Homebridge](https://github.com/nfarina/homebridge) the current temperature and humidity should now be displayed in your Home app! (see below for images).
 
 ## Images
 ### Home App
-![Home App](https://github.com/greenywd/esp8266_homekit_temp/blob/dht22/Home_screenshot.png?raw=true)
+![Home App](https://github.com/greenywd/esp8266_homekit_temp/blob/master/Home_screenshot.png)
 
 ### Schematic
-![](https://github.com/greenywd/esp8266_homekit_temp/blob/dht22/Hardware_config.png?raw=true)
+![Schematic](https://github.com/greenywd/esp8266_homekit_temp/blob/master/Hardware_config.png)
