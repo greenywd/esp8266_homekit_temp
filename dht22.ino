@@ -3,8 +3,8 @@
 #include <ESP8266WebServer.h>
 #include "DHT.h"
 
-#define WIFI_SSID "Tardis"        // Wifi Name
-#define WIFI_PASSWORD "D0ct0r??"  // WiFi Password
+#define WIFI_SSID "Your SSID"                // Wifi Name
+#define WIFI_PASSWORD "Your WiFi Password"   // WiFi Password
 
 #define DHTPIN 4                  // what digital pin the DHT22 is conected to
 #define DHTTYPE DHT22             // there are multiple kinds of DHT sensors
