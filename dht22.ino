@@ -3,14 +3,17 @@
 #include <ESP8266WebServer.h>
 #include "DHT.h"
 
-#define WIFI_SSID "WIFI SSID"
-#define WIFI_PASSWORD "WIFI PASSWORD"
+#define WIFI_SSID "Tardis"        // Wifi Name
+#define WIFI_PASSWORD "D0ct0r??"  // WiFi Password
+
+#define DHTPIN 4                  // what digital pin the DHT22 is conected to
+#define DHTTYPE DHT22             // there are multiple kinds of DHT sensors
 
 // create an instance of the webserver on port 80 (ESP8266 can barely do SSL) 
 ESP8266WebServer server(80);
 
 // create an instance using the Adafruit DHT Library, configuring the pin and type of sensor
-DHT dht(D2, DHT22); 
+DHT dht(DHTPIN, DHTTYPE);
 
 // function to handle the root of webserver - not needed but is nice to have
 void handleRoot() {
@@ -55,10 +58,20 @@ void setup(){
   
   // setup the page located at /temperature
   server.on("/temperature", [](){
+
+      // read humidity and stringify
+      float h = dht.readHumidity();
+      char h_str[7];
+      dtostrf(h, 4, 2, h_str);
+
+      // read temperature and stringify
+      float t = dht.readTemperature();
+      char t_str[7];
+      dtostrf(t, 4, 2, t_str);
       
-      // create a char to 
+      // create a char and insert output 
       char json[128];
-      snprintf(json, sizeof(json), "{\n \"temperature\":%i,\n \"humidity\":%i\n}", round(dht.readTemperature()), round(dht.readHumidity()));
+      snprintf(json, sizeof(json), "{\n \"temperature\":%s,\n \"humidity\":%s\n}", t_str, h_str);
       
       // print to serial that the page was accessed
       Serial.println("Page accessed...");
